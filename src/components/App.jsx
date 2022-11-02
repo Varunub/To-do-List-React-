@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Li from "./todolist";
 import InputField from "./inputArea";
 function App() {
-  const [inputText, setInputText] = useState("");
+  
   const [items, setItems] = useState([]);
 
   function deleteItem(id) {
@@ -12,12 +12,7 @@ function App() {
       });
     });
   }
-  function handleChange(event) {
-    const newValue = event.target.value;
-    setInputText(newValue);
-  }
-
-  function addItem() {
+  function addItem(inputText) {
     setItems((prevItems) => {
       if (inputText) {
         return [...prevItems, inputText];
@@ -25,7 +20,7 @@ function App() {
         return [...prevItems];
       }
     });
-    setInputText("");
+    
   }
 
   return (
@@ -34,8 +29,6 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <InputField
-        text={inputText}
-        onchange={handleChange}
         onclick={addItem}
       ></InputField>
       <div>
